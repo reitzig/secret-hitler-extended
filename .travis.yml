@@ -1,0 +1,23 @@
+sudo: required
+language: generic
+services: docker
+
+tex-config:
+- build-pattern=src/envelopes.tex,src/links.tex,src/rules_booklet.tex
+- packages=adjustbox,fontenc,geometry,ifpdf,ifxetex,ifluatex,pdfpages,qrcode,relsize,tikz,xifthen,xparse,yfonts
+
+script:
+- docker pull strauman/travis-latexbuild:small
+- docker run --mount src=${TRAVIS_BUILD_DIR}/,target=/repo,type=bind strauman/travis-latexbuild:small
+- cp src/art/Secret_Hitler_Print_and_Play.pdf src/material.pdf
+- tar -czf secret_hitler_${TRAVIS_BRANCH}.tar.gz -C src rules_booklet.pdf envelopes.pdf material.pdf
+
+deploy:
+  provider: releases
+  api_key:
+    secure: svwWwXZk36NOulI5C5rYJ3NDSoWolDPgYzA7VDk7fUoORC841BsGywLsSBrvm0K6zslFMVO4rc2s7GG9a4lbPHmwnr76ns9a3p3uBl6tsE+MFrRRCgwDgbbL8yl2f8eFMz0maTND8ZM4U+/22FLtnNpWbkEc/mrWe80/NmHWNSYw4Lz+TxvVwJ9+beCIBsceFiMAzgFTWimJsqpo3JT3zOlCBb3jfQCG+sO7HTC78G63npVkgQCaOYuIDNf+2qfRtE1ufQOjRLv1ObPKyFUTNfJaGg2seWTk1d9j4fGecfdjZkRu/y/RMyMY6VjZgeEAjAL1jT8tYOdkEjazVDrLLZtlnZURcHKEhErSkb7Yg6oFwE7AbmO2/YlHhlF5gLyKW1CnyIl7uQguzsg52FMS2PTDSVDcPmeWcQmSqWVS1BDmiWX/XMNTb2i2Ig93C1TcbASjrYesZpG8gL6T8GwkjHa6RPd6ak75IDTS6tcxP4pT35YqaYMDHfZtTqDTRVWkIa6Ne62LSI2rb9PwyMrVz1w+K1AcVPjhc3cDOPd9Fp1RWhAE44jERKPhAKfUu1oxD+KsGesKqF7Kgu/8Jqmaw65t8cYYMxgvQTNN/cCnj2fNVDzn8RcA/zdJ3+UjOXAa0UhWn37N/DoiB1X6/wxrcubmqGip+tXVe1+e7k5kJDU=
+  file: secret_hitler_${TRAVIS_BRANCH}.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
+

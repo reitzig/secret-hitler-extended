@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+
+\usepackage{qrcode,adjustbox,yfonts}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1cm]{geometry}
+\pagestyle{empty}
+
+\begin{document}%
+    \centering\frakfamily\Huge%
+    
+    \ \vfill%
+    \adjustbox{scale=2}{How to Play \Large(4min)}\\[2ex]
+    \qrcode[height=60mm]{https://www.youtube.com/watch?v=mbGXIDYdtas}
+    
+    \vfill%
+    \adjustbox{scale=2}{Companion App}\\[2ex]
+    \begin{minipage}{65mm}%
+        \centering%
+        \qrcode[height=60mm]{https://play.google.com/store/apps/details?id=com.goatwolfcabbage.SecretHitler}%
+        \\[1ex]
+        Android
+    \end{minipage}\hspace{10mm}%
+    \begin{minipage}{65mm}%
+        \centering%
+        \qrcode[height=60mm]{https://itunes.apple.com/us/app/secret-hitler-companion/id1147289666}%
+        \\[1ex]
+        iOS
+    \end{minipage}
+    
+    \ \vfill\ %
+\end{document}
+

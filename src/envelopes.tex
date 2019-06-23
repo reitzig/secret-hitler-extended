@@ -1,0 +1,28 @@
+\documentclass[a4paper]{article}
+
+\usepackage{envelope-playing-cards}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{relsize}
+\pagestyle{empty}
+
+\newcommand{\cuthint}{%
+    \begin{tikzpicture}[overlay,remember picture]%
+        \node[rotate=90] at ($(current page.west) + (20mm,0)$)
+            {\textbf{\textsf{\textlarger[2]{Cut along solid lines}}}};
+    \end{tikzpicture}%
+}
+
+\begin{document}%
+    \centering%
+    \foreach \i in {1,...,5} {%
+        \ \vfill%
+        \envelope[1.175][height=55mm][art/Streng_Geheim]\\[-0.3ex]%
+        \envelope[1.175][height=55mm][art/Streng_Geheim]%
+        \cuthint%
+        \ \vfill\ %
+    }%
+    \cuthint%
+    \envelope[1.175][height=40mm][art/articles]\\[-0.3ex]%
+    \envelopeTemplate[1.175]
+\end{document}
+

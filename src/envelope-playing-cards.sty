@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{envelope-playing-cards}[2018/10/21 by Raphael Reitzig]
+
+\RequirePackage{ifpdf,ifxetex,ifluatex} 
+\ifluatex\else\ifxetex\else
+    \RequirePackage[utf8]{inputenc}
+\fi\fi
+
+\RequirePackage{xifthen}
+\RequirePackage{xparse}
+\RequirePackage{tikz}
+\usetikzlibrary{calc,positioning}
+
+% Base Dimensions 
+% from "Biz Card" Kreate-a-lope(R) by Nick Romer
+\def\outerLong{120mm}%
+\def\outerShort{91mm}%
+\def\innerWidth{95mm}%
+\def\innerHeight{62mm}%
+\def\cardWidth{93mm}%
+\def\cardHeight{59mm}%
+
+\NewDocumentCommand{\internalEnvelopeOutline}{ O{1.0} }{%
+    \draw (0,                   0)
+       -- (#1*\outerLong,  0)
+       -- (#1*\outerLong,  #1*\outerShort)
+       -- (#1*\outerShort, #1*\outerLong)
+       -- (0,              #1*\outerLong)
+       -- cycle;
+       
+    % TODO: add glue area
+}
+
+\NewDocumentCommand{\envelope}{ O{1.0} O{} O{} }{%
+    %
+    \def\factor{#1}%
+    %
+    \begin{tikzpicture}
+        \coordinate (center) at (\factor*\outerLong/2, \factor*\outerLong/2);
+    
+        % Image / Content first, so lines go over
+        \ifthenelse{\isempty{#3}}{}{%
+            \node[rotate around={140:(center)}] at (center)
+                {\includegraphics[#2]{#3}};
+        }
+        
+        % Envelope Outline
+        \internalEnvelopeOutline[\factor]
+    \end{tikzpicture}%
+}
+
+\NewDocumentCommand{\envelopeTemplate}{ O{1.0} }{%
+    %
+    % Factor
+    \def\factor{#1}%
+    %
+    \begin{tikzpicture}
+        % Envelope Outline
+        \internalEnvelopeOutline[\factor]
+           
+        \coordinate (center) at (\factor*\outerLong/2, \factor*\outerLong/2);
+        
+        % Positioning Cutout
+        \draw[rotate around={-45:(center)}] 
+                      ($(center) + ( \factor*\innerWidth/2,  \factor*\innerHeight/2)$)
+            rectangle ($(center) + (-\factor*\innerWidth/2, -\factor*\innerHeight/2)$);
+        
+        % Card Outline
+        \draw[rotate around={-45:(center)}] 
+                      ($(center) + ( \factor*\cardWidth/2,  \factor*\cardHeight/2)$)
+            rectangle ($(center) + (-\factor*\cardWidth/2, -\factor*\cardHeight/2)$);
+    \end{tikzpicture}%
+}

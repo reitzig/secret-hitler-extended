@@ -19,6 +19,10 @@
 \def\innerHeight{62mm}%
 \def\cardWidth{93mm}%
 \def\cardHeight{59mm}%
+% Glue strip dimensions
+\def\glueOffset{21mm}%
+\def\glueLength{25mm}%
+\def\glueWidth{5.5mm}%
 
 \NewDocumentCommand{\internalEnvelopeOutline}{ O{1.0} }{%
     \draw (0,                   0)
@@ -27,8 +31,14 @@
        -- (#1*\outerShort, #1*\outerLong)
        -- (0,              #1*\outerLong)
        -- cycle;
-       
-    % TODO: add glue area
+}
+
+\NewDocumentCommand{\internalGlueArea}{ O{1.0} } {%
+    \draw[draw=none,fill=black!7.5]
+        ($(#1*\outerLong, 0) + (0, #1*\glueOffset)$) 
+            rectangle +(-#1*\glueWidth, #1*\glueLength)
+        ($(0, #1*\outerLong) + (#1*\glueOffset, 0)$) 
+            rectangle +(#1*\glueLength, -#1*\glueWidth);
 }
 
 \NewDocumentCommand{\envelope}{ O{1.0} O{} O{} }{%
@@ -44,7 +54,7 @@
                 {\includegraphics[#2]{#3}};
         }
         
-        % Envelope Outline
+        \internalGlueArea[\factor]
         \internalEnvelopeOutline[\factor]
     \end{tikzpicture}%
 }

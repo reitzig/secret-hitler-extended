@@ -11,7 +11,7 @@ script:
 - docker pull strauman/travis-latexbuild:small
 - docker run --mount src=${TRAVIS_BUILD_DIR}/,target=/repo,type=bind strauman/travis-latexbuild:small
 - cp src/art/Secret_Hitler_Print_and_Play.pdf src/material.pdf
-- tar -czf secret_hitler_${TRAVIS_BRANCH}.tar.gz -C src rules_booklet.pdf envelopes.pdf material.pdf
+- tar -czf secret_hitler_${TRAVIS_BRANCH}.tar.gz LICENSE -C src rules_booklet.pdf envelopes.pdf material.pdf
 
 deploy:
   provider: releases

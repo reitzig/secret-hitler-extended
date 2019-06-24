@@ -1,7 +1,8 @@
 # Secret Hitler Print & Play
 
-This project is published under a 
-  [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+[![Travis build](https://travis-ci.org/reitzig/secret-hitler-extended.svg?branch=master)](https://travis-ci.org/reitzig/secret-hitler-extended#)
+ ˙ 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
 
 ## Assembly
 

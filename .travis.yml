@@ -4,7 +4,8 @@ services: docker
 
 tex-config:
 - build-pattern=src/envelopes.tex,src/links.tex,src/rules_booklet.tex
-- packages=adjustbox,fontenc,geometry,ifpdf,ifxetex,ifluatex,pdfpages,qrcode,relsize,tikz,xifthen,xparse,yfonts
+- packages=adjustbox,collectbox,collection-fontsrecommended,geometry,gothic,ifmtarg,ifxetex,ifluatex,l3kernel,l3packages,pdfpages,pgf,qrcode,relsize,xcolor,xifthen,xkeyval,yfonts
+- push-type=none
 
 script:
 - docker pull strauman/travis-latexbuild:small

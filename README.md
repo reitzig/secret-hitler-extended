@@ -5,7 +5,8 @@ This project is published under a
 
 ## Assembly
 
- 0. Download and extract the [latext archive]().
+ 0. Download and extract the archive with the 
+      [latest version](https://github.com/reitzig/secret-hitler-extended/releases).
 
  1. Print `rules_booklet.pdf` on regular A4 paper (80-100g) (double-sided);
     fold and staple stack along the center to create a booklet.

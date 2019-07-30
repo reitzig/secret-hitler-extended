@@ -28,7 +28,7 @@
      - a _Secret Role_ card,
      - a corresponding _Party Membership_ card, 
      - one _Ja! Ballot_ card, and 
-     - one _Nein_ Ballot_ card
+     - one _Nein! Ballot_ card
         
     in each of the ten _Streng Geheim_ envelopes.
     

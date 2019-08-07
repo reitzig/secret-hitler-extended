@@ -4,6 +4,14 @@
  ˙ 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
 
+This project extends the
+  [Secret Hitler](https://www.secrethitler.com/)
+print & play by
+
+ - envelopes for all the cards and
+ - the rules as an A5 booklet with
+ - QR-coded links to helpful resources.
+
 ## Assembly
 
  0. Download and extract the archive with the 
